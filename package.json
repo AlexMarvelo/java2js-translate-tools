@@ -1,0 +1,11 @@
+{
+  "name": "java2js-translate-tools",
+  "version": "0.1.0",
+  "description": "Toolbox for converting translations from java .properties to .json",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alexey <mironenkoalexey@gmail.com>",
+  "license": "ISC"
+}
