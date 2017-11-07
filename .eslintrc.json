@@ -1,0 +1,50 @@
+{
+	"parser"  : "babel-eslint",
+	"extends" : [
+		"airbnb-base"
+	],
+	"env"     : {
+		"node" : true
+	},
+	"rules": {
+		"semi" : [2, "always"],
+		"max-len": [2, 350, 2],
+		"indent": [2, "tab"],
+		"import/no-unresolved": [
+			2, {
+				"ignore": [
+					"^utils.*",
+					"^components.*",
+					"^static.*"
+				]
+			}
+		],
+		"no-param-reassign": [2, {"props": false}],
+		"no-console": ["warn", {
+			"allow": ["warn", "error"]
+		}],
+		"comma-dangle": ["error", {
+				"arrays": "always-multiline",
+				"objects": "always-multiline",
+				"imports": "always-multiline",
+				"exports": "always-multiline",
+				"functions": "never"
+		}],
+		"no-nested-ternary": 0,
+		"no-tabs": 0,
+		"no-uderscore-dangling": 0,
+		"new-cap": 0,
+		"no-underscore-dangle": 0,
+		"import/no-extraneous-dependencies": 0,
+		"prefer-destructuring": 0,
+		"no-unused-vars": 1,
+		"no-else-return": 1,
+		"arrow-body-style": 1,
+		"global-require": 1,
+		"import/prefer-default-export": 1,
+		"no-mixed-operators": 1,
+		"no-plusplus": 1,
+		"newline-per-chained-call": 1,
+		"space-infix-ops": 1
+	}
+}
