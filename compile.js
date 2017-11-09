@@ -6,10 +6,6 @@ const merge = require('lodash/merge');
 const debug = require('debug')('app:scripts:i18n2Json');
 
 
-const ACCESSIBLE_LOCALES_LIST_PATH = path.join(__dirname, '../../public/app/lib/hi.src/nls/hi.js');
-
-const DEFAULT_LOCALE = 'en';
-
 const javaStringToLocaleMessageFormat = (string) => {
 	let counter = -1;
 	return string.replace(/%([a-z])/g, ((match, p1) => {
@@ -33,10 +29,17 @@ const stringWithDotsProcess = ({
 	});
 };
 
-const parseAccessibleLocales = () => {
-	const file = fs.readFileSync(ACCESSIBLE_LOCALES_LIST_PATH, 'utf-8');
-	const matchLocaleRegexp = /["|']\w+["|']/img;
-	return (file.match(matchLocaleRegexp).map(match => match.slice(1, -1)));
+const parseAccessibleLocales = (src) => {
+	const ignoreList = ['.DS_Store'];
+	const locales = [];
+	fs.readdirSync(src).forEach((itemName) => {
+		if (ignoreList.indexOf(itemName) === -1) {
+			if (fs.statSync(`${src}/${itemName}`).isDirectory()) {
+				locales.push(itemName);
+			}
+		}
+	});
+	return locales;
 };
 
 const dots2keys = (obj) => {
@@ -65,14 +68,15 @@ const parseLanguagesFromDir = ({ localeName, langDir }) => {
 	return allLocalesObject;
 };
 
-module.exports = function props2Json(argv) {
-    return console.log('Hello!');
+const props2Json = (argv) => {
+	const {
+		src: langDir,
+		dist: destinationDir,
+		default: defaultLocale,
+	} = argv;
 	debug('Start parsing locales props files to Json');
-	const locales = parseAccessibleLocales();
-	// process.exit();
-
-	const langDir = path.join(__dirname, '../../languages');
-	const destinationDir = path.join(__dirname, '../public/locales');
+	const locales = parseAccessibleLocales(langDir);
+	if (!locales.length) return;
 
 	// Delete old .json files
 	glob
@@ -84,7 +88,7 @@ module.exports = function props2Json(argv) {
 
 	fs.writeFileSync(path.join(destinationDir, 'accessibleLocales.json'), JSON.stringify(locales, null, 4), 'utf-8');
 
-	const defaultLocalesObj = parseLanguagesFromDir({ localeName: DEFAULT_LOCALE, langDir });
+	const defaultLocalesObj = parseLanguagesFromDir({ localeName: defaultLocale, langDir });
 
 
 	// Genereated needed locales
@@ -99,3 +103,5 @@ module.exports = function props2Json(argv) {
 
 	debug('All the localisation files prepared. OK.');
 };
+
+module.exports = props2Json;

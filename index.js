@@ -1,16 +1,30 @@
+/* eslint no-unused-expressions:0 */
 const yargs = require('yargs');
 const compileProps2Json = require('./compile');
 
 
-const argv = yargs.command(
+yargs.command(
 	'compile',
 	'compile JSON-formatted translation files', {
 		// Options
 		src: {
 			alias: 's',
 		},
+		dist: {
+			alias: 'd',
+		},
+		default: {
+			alias: 'f',
+			default: 'en',
+		},
 	}, (args) => {
 		// Handler
-		return compileProps2Json(args);
+		try {
+			compileProps2Json(args);
+		} catch (error) {
+			console.error(error);
+		}
 	}
-).help().argv;
+)
+	.help()
+	.argv;
