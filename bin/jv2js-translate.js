@@ -1,4 +1,9 @@
+#!/usr/bin/env node
+
 /* eslint no-unused-expressions:0 */
+
+'use strict';
+
 const yargs = require('yargs');
 const compileProps2Json = require('../lib/compileProps2Json');
 

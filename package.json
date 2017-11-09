@@ -2,7 +2,7 @@
   "name": "java2js-translate-tools",
   "version": "0.1.1",
   "description": "Toolbox for converting translations from java .properties to .json",
-  "main": "index.js",
+  "main": "./lib/compileProps2Json",
   "author": "Aleksey Mironenko <mironenkoalexey@gmail.com>",
   "keywords": [
     "cli",
@@ -28,9 +28,9 @@
     "yargs": "^10.0.3"
   },
   "scripts": {
-    "start": "node ./bin/jv2js-translate.js",
+    "start": "node ./bin/jv2js-translate",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "jv2js-translate": "node ./bin/jv2js-translate.js"
+    "jv2js-translate": "node ./bin/jv2js-translate"
   },
   "bin": {
     "jv2js-translate": "./bin/jv2js-translate"
