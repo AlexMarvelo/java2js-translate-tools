@@ -1,6 +1,6 @@
 {
   "name": "java2js-translate-tools",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Toolbox for converting translations from java .properties to .json",
   "main": "./lib/compileProps2Json",
   "author": "Aleksey Mironenko <mironenkoalexey@gmail.com>",
