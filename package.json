@@ -19,15 +19,19 @@
   "license": "ISC",
   "devDependencies": {
     "babel-eslint": "^8.0.2",
-    "debug": "^3.1.0",
     "eslint": "^4.10.0",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.8.0",
-    "glob": "^7.1.2",
-    "lodash": "^4.17.4",
-    "properties-parser": "^0.3.1"
+    "eslint-plugin-import": "^2.8.0"
   },
   "dependencies": {
+    "colors": "^1.1.2",
+    "glob": "^7.1.2",
+    "lodash": "^4.17.4",
+    "properties-parser": "^0.3.1",
+    "winston": "^2.4.0",
     "yargs": "^10.0.3"
+  },
+  "bin": {
+    "jv2js-translate": "./index"
   }
 }

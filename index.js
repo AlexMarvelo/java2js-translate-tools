@@ -9,13 +9,16 @@ yargs.command(
 		// Options
 		src: {
 			alias: 's',
+			describe: 'puth to a folder with locales directories',
 		},
 		dist: {
 			alias: 'd',
+			describe: 'path to a folder where compiled files will be placed',
 		},
 		default: {
 			alias: 'f',
 			default: 'en',
+			describe: 'default locale (must match one of locales folder name)',
 		},
 	}, (args) => {
 		// Handler
@@ -26,5 +29,6 @@ yargs.command(
 		}
 	}
 )
+	.demandOption(['src', 'dist'], 'Please provide both src and dist arguments')
 	.help()
 	.argv;

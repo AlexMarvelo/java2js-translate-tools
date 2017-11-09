@@ -1,9 +1,9 @@
+require('colors');
 const { read } = require('properties-parser');
 const glob = require('glob');
 const path = require('path');
 const fs = require('fs');
 const merge = require('lodash/merge');
-const debug = require('debug')('app:scripts:i18n2Json');
 
 
 const javaStringToLocaleMessageFormat = (string) => {
@@ -74,7 +74,7 @@ const props2Json = (argv) => {
 		dist: destinationDir,
 		default: defaultLocale,
 	} = argv;
-	debug('Start parsing locales props files to Json');
+	// console.log('Start parsing locales props files to Json');
 	const locales = parseAccessibleLocales(langDir);
 	if (!locales.length) return;
 
@@ -85,23 +85,21 @@ const props2Json = (argv) => {
 			fs.unlinkSync(path.join(destinationDir, localeName));
 		});
 
-
 	fs.writeFileSync(path.join(destinationDir, 'accessibleLocales.json'), JSON.stringify(locales, null, 4), 'utf-8');
 
 	const defaultLocalesObj = parseLanguagesFromDir({ localeName: defaultLocale, langDir });
 
-
 	// Genereated needed locales
 	locales.forEach((localeName) => {
-		debug(`Start parsing locale: ${localeName}`);
+		// console.log(`Start parsing locale: ${localeName}`);
 		const localesObject = parseLanguagesFromDir({ localeName, langDir });
 		const localeObjectWithDefaultsApplied = merge({}, defaultLocalesObj, localesObject);
 		const destFile = path.join(destinationDir, `${localeName}.json`);
 		fs.writeFileSync(destFile, JSON.stringify(localeObjectWithDefaultsApplied, null, 4), 'utf-8');
-		debug(`File was successfully written: ${destFile}`);
+		console.log(`${localeName} locale file was successfully written`.green);
 	});
 
-	debug('All the localisation files prepared. OK.');
+	console.info('All the localisation files prepared. OK.'.green);
 };
 
 module.exports = props2Json;
