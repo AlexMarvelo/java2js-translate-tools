@@ -28,7 +28,7 @@
     "yargs": "^10.0.3"
   },
   "scripts": {
-    "start": "node ./index.js",
+    "start": "node ./bin/jv2js-translate.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "jv2js-translate": "node ./bin/jv2js-translate.js"
   },
