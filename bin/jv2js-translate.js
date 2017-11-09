@@ -1,6 +1,6 @@
 /* eslint no-unused-expressions:0 */
 const yargs = require('yargs');
-const compileProps2Json = require('./compile');
+const compileProps2Json = require('../lib/compileProps2Json');
 
 
 yargs.command(

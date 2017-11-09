@@ -3,10 +3,6 @@
   "version": "0.1.0",
   "description": "Toolbox for converting translations from java .properties to .json",
   "main": "index.js",
-  "scripts": {
-    "start": "node ./index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Aleksey Mironenko <mironenkoalexey@gmail.com>",
   "keywords": [
     "cli",
@@ -31,7 +27,12 @@
     "winston": "^2.4.0",
     "yargs": "^10.0.3"
   },
+  "scripts": {
+    "start": "node ./index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "jv2js-translate": "node ./bin/jv2js-translate.js"
+  },
   "bin": {
-    "jv2js-translate": "./index"
+    "jv2js-translate": "./bin/jv2js-translate"
   }
 }
