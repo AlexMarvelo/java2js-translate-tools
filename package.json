@@ -38,5 +38,6 @@
   },
   "bin": {
     "jv2js-translate": "./bin/jv2js-translate"
-  }
+  },
+  "preferGlobal": true
 }
