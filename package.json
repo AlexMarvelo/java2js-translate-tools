@@ -2,7 +2,6 @@
   "name": "java2js-translate-tools",
   "version": "0.1.2",
   "description": "Toolbox for converting translations from java .properties to .json",
-  "main": "./lib/compileProps2Json",
   "author": "Aleksey Mironenko <mironenkoalexey@gmail.com>",
   "keywords": [
     "cli",
@@ -12,6 +11,11 @@
     "type": "git",
     "url": "git@github.com:AlexMarvelo/java2js-translate-tools.git"
   },
+  "files": [
+    "lib",
+    "bin"
+  ],
+  "main": "./lib/compileProps2Json",
   "license": "ISC",
   "devDependencies": {
     "babel-eslint": "^8.0.2",
