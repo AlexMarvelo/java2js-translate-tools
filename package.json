@@ -11,6 +11,9 @@
     "type": "git",
     "url": "git@github.com:AlexMarvelo/java2js-translate-tools.git"
   },
+  "bugs": {
+    "url": "https://github.com/AlexMarvelo/java2js-translate-tools/issues"
+  },
   "files": [
     "lib",
     "bin"
