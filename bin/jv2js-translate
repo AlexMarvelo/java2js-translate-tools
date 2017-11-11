@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-/* eslint no-unused-expressions:0 */
+/* eslint no-unused-expressions:0 strict:0 */
 
 'use strict';
 
@@ -30,7 +30,7 @@ yargs.command(
 		try {
 			compileProps2Json(args);
 		} catch (error) {
-			console.error(error);
+			throw error;
 		}
 	}
 )
