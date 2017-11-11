@@ -34,6 +34,7 @@
   "scripts": {
     "start": "node ./bin/jv2js-translate",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "eslint": "eslint ./lib ./bin",
     "jv2js-translate": "node ./bin/jv2js-translate"
   },
   "bin": {
