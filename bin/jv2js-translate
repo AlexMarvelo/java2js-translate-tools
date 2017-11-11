@@ -6,12 +6,12 @@
 
 const yargs = require('yargs');
 const compileProps2Json = require('../lib/compileProps2Json');
+const { checkRelativePath, checkFolderExists } = require('../lib/utils');
 
 
 yargs.command(
 	'compile',
 	'compile JSON-formatted translation files', {
-		// Options
 		src: {
 			alias: 's',
 			describe: 'puth to a folder with locales directories',
@@ -25,13 +25,15 @@ yargs.command(
 			default: 'en',
 			describe: 'default locale (must match one of locales folder name)',
 		},
-	}, (args) => {
-		// Handler
-		try {
-			compileProps2Json(args);
-		} catch (error) {
-			throw error;
+	}, (argv) => {
+		const args = checkRelativePath(argv, ['src', 's', 'dist', 'd']);
+		if (!checkFolderExists(args.src)) {
+			throw new Error(`Folder ${args.src} does not exist`);
 		}
+		if (!checkFolderExists(args.dist)) {
+			throw new Error(`Folder ${args.dist} does not exist`);
+		}
+		compileProps2Json(args);
 	}
 )
 	.demandOption(['src', 'dist'], 'Please provide both src and dist arguments')
