@@ -11,19 +11,19 @@ const { checkRelativePath, checkFolderExists } = require('../lib/utils');
 
 yargs.command(
 	'compile',
-	'compile JSON-formatted translation files', {
+	'Compile translation files from java properties to JSON', {
 		src: {
 			alias: 's',
-			describe: 'puth to a folder with locales directories',
+			describe: 'path to folder with source locales directories',
 		},
 		dist: {
 			alias: 'd',
-			describe: 'path to a folder where compiled files will be placed',
+			describe: 'path to folder where compiled files will be placed',
 		},
 		default: {
 			alias: 'f',
 			default: 'en',
-			describe: 'default locale (must match one of locales folder name)',
+			describe: 'default locale',
 		},
 	}, (argv) => {
 		const args = checkRelativePath(argv, ['src', 's', 'dist', 'd']);
@@ -37,5 +37,4 @@ yargs.command(
 	}
 )
 	.demandOption(['src', 'dist'], 'Please provide both src and dist arguments')
-	.help()
 	.argv;
